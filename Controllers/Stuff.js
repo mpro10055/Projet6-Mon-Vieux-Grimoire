@@ -2,11 +2,14 @@ const Thing = require('../modeles/Thing');
 
 exports.createThing = (req, res, next) => {
   const thing = new Thing({
-    title: req.body.title,
-    description: req.body.description,
-    imageUrl: req.body.imageUrl,
-    price: req.body.price,
-    userId: req.body.userId
+    id: { type: String, required: true },
+userId: { type: String, required: true },
+title: { type: String, required: true },
+author: { type: String, required: true },
+ImageUrl: { type: String, required: true },
+year: { type: Number, required: true },
+genre: { type: String, required: true },
+ratings: { type: [Number], required: true}
   });
   thing.save().then(
     () => {
@@ -41,12 +44,14 @@ exports.getOneThing = (req, res, next) => {
 
 exports.modifyThing = (req, res, next) => {
   const thing = new Thing({
-    _id: req.params.id,
-    title: req.body.title,
-    description: req.body.description,
-    imageUrl: req.body.imageUrl,
-    price: req.body.price,
-    userId: req.body.userId
+    id: { type: String, required: true },
+userId: { type: String, required: true },
+title: { type: String, required: true },
+author: { type: String, required: true },
+ImageUrl: { type: String, required: true },
+year: { type: Number, required: true },
+genre: { type: String, required: true },
+ratings: { type: [Number], required: true}
   });
   Thing.updateOne({_id: req.params.id}, thing).then(
     () => {
